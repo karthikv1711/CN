@@ -1,3 +1,22 @@
+/*
+Experiment-3
+write a program to implement data link layer framing method checksum.
+Description: The checksum method is widely used in data link layer protocols for error
+detection. A checksum is calculated over the data and appended to the frame. The receiver
+recalculates the checksum and compares it with the received one to detect errors introduced
+during transmission.
+Explanation:
+• Framing: Uses 0x7E as the start-of-frame (SOF) and 0x7F as the end-of-frame (EOF)
+delimiter bytes (can be set as per protocol).
+• Checksum Calculation: Sums all data bytes modulo 256 (one-byte checksum).
+• Sender: Packs data, checksum, and delimiters into a frame.
+• Receiver: Checks frame delimiters, extracts data, recalculates checksum, and compares
+with received checksum.
+• Error Detection: If frame structure or checksum doesn't match, an error is detected.
+
+*/
+
+
 #include <stdio.h>
 #include <string.h>
 
@@ -57,3 +76,18 @@ int main() {
     }
     return 0;
 }
+
+
+
+
+/*
+Output 1:
+Enter data to send: HELLO
+Transmitted Frame (in hex): 7E 48 45 4C 4C 4F 26 7F
+Received data: HELLO
+No error detected in frame.
+Output 2:
+Enter data to send: Hello
+Transmitted Frame (in hex): 7E 48 65 6C 6C 6F F4 7F
+Checksum error!
+*/
